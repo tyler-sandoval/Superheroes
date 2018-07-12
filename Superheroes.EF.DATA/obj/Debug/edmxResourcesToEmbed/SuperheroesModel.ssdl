@@ -30,6 +30,16 @@
     <Property Name="CharID" Type="int" Nullable="false" />
     <Property Name="CourseID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="CourseType">
     <Key>
       <PropertyRef Name="TypeID" />
@@ -61,10 +71,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_CourseCharacters_Courses1">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CourseCharacters" Type="Self.CourseCharacters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseCharacters">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_CourseType">
+    <End Role="CourseType" Type="Self.CourseType" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TeamSuperheroesModelStoreContainer">
     <EntitySet Name="Alignments" EntityType="Self.Alignments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CourseCharacters" EntityType="Self.CourseCharacters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CourseType" EntityType="Self.CourseType" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Characters_Alignments" Association="Self.FK_Characters_Alignments">
       <End Role="Alignments" EntitySet="Alignments" />
@@ -73,6 +108,14 @@
     <AssociationSet Name="FK_CourseCharacters_Characters" Association="Self.FK_CourseCharacters_Characters">
       <End Role="Characters" EntitySet="Characters" />
       <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseCharacters_Courses1" Association="Self.FK_CourseCharacters_Courses1">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_CourseType" Association="Self.FK_Courses_CourseType">
+      <End Role="CourseType" EntitySet="CourseType" />
+      <End Role="Courses" EntitySet="Courses" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

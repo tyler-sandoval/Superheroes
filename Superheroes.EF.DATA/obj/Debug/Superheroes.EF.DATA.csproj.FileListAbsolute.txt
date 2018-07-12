@@ -7,3 +7,4 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superhero
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.EF.DATA\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.EF.DATA\obj\Debug\Superheroes.EF.DATA.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.EF.DATA\obj\Debug\Superheroes.EF.DATA.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.EF.DATA\obj\Debug\Superheroes.EF.DATA.csprojResolveAssemblyReference.cache

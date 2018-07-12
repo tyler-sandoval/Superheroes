@@ -33,6 +33,7 @@
     <Property Name="CharID" Type="Int32" Nullable="false" />
     <Property Name="CourseID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Character" Relationship="Self.FK_CourseCharacters_Characters" FromRole="CourseCharacters" ToRole="Characters" />
+    <NavigationProperty Name="Cours" Relationship="TeamSuperheroesModel.FK_CourseCharacters_Courses1" FromRole="CourseCharacter" ToRole="Cours" />
   </EntityType>
   <EntityType Name="CourseType">
     <Key>
@@ -40,6 +41,7 @@
     </Key>
     <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="TeamSuperheroesModel.FK_Courses_CourseType" FromRole="CourseType" ToRole="Cours" />
   </EntityType>
   <Association Name="FK_Characters_Alignments">
     <End Role="Alignments" Type="Self.Alignment" Multiplicity="0..1" />
@@ -78,5 +80,50 @@
       <End Role="Characters" EntitySet="Characters" />
       <End Role="CourseCharacters" EntitySet="CourseCharacters" />
     </AssociationSet>
+    <EntitySet Name="Courses" EntityType="TeamSuperheroesModel.Course" />
+    <AssociationSet Name="FK_CourseCharacters_Courses1" Association="TeamSuperheroesModel.FK_CourseCharacters_Courses1">
+      <End Role="Cours" EntitySet="Courses" />
+      <End Role="CourseCharacter" EntitySet="CourseCharacters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_CourseType" Association="TeamSuperheroesModel.FK_Courses_CourseType">
+      <End Role="CourseType" EntitySet="CourseTypes" />
+      <End Role="Cours" EntitySet="Courses" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CourseCharacters" Relationship="TeamSuperheroesModel.FK_CourseCharacters_Courses1" FromRole="Cours" ToRole="CourseCharacter" />
+    <NavigationProperty Name="CourseType" Relationship="TeamSuperheroesModel.FK_Courses_CourseType" FromRole="Cours" ToRole="CourseType" />
+  </EntityType>
+  <Association Name="FK_CourseCharacters_Courses1">
+    <End Type="TeamSuperheroesModel.Course" Role="Cours" Multiplicity="1" />
+    <End Type="TeamSuperheroesModel.CourseCharacter" Role="CourseCharacter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseCharacter">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_CourseType">
+    <End Type="TeamSuperheroesModel.CourseType" Role="CourseType" Multiplicity="1" />
+    <End Type="TeamSuperheroesModel.Course" Role="Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Cours">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

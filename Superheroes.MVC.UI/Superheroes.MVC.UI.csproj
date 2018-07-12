@@ -44,6 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -121,15 +133,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -170,10 +173,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +194,42 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="_Archive\about.html" />
+    <Content Include="_Archive\archive.html" />
+    <Content Include="_Archive\contact.html" />
+    <Content Include="_Archive\css\bootstrap.min.css" />
+    <Content Include="_Archive\css\font-awesome.min.css" />
+    <Content Include="_Archive\css\material.min.css" />
+    <Content Include="_Archive\css\responsive.css" />
+    <Content Include="_Archive\css\ripples.min.css" />
+    <Content Include="_Archive\fonts\fontawesome-webfont.svg" />
+    <Content Include="_Archive\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="_Archive\fonts\Material-Design-Icons.svg" />
+    <Content Include="_Archive\img\about.jpg" />
+    <Content Include="_Archive\img\article-1.jpg" />
+    <Content Include="_Archive\img\article-2.jpg" />
+    <Content Include="_Archive\img\article-3.jpg" />
+    <Content Include="_Archive\img\article-4.jpg" />
+    <Content Include="_Archive\img\article-5.jpg" />
+    <Content Include="_Archive\img\avatar_1.jpg" />
+    <Content Include="_Archive\img\avatar_2.jpg" />
+    <Content Include="_Archive\img\avatar_3.jpg" />
+    <Content Include="_Archive\img\avatar_4.jpg" />
+    <Content Include="_Archive\img\eva.jpg" />
+    <Content Include="_Archive\img\map-marker.png" />
+    <Content Include="_Archive\img\post-1.jpg" />
+    <Content Include="_Archive\img\post-2.jpg" />
+    <Content Include="_Archive\img\single.jpg" />
+    <Content Include="_Archive\index.html" />
+    <Content Include="_Archive\js\bootstrap.min.js" />
+    <Content Include="_Archive\js\jquery.particleground.min.js" />
+    <Content Include="_Archive\js\jquery.scrolly.js" />
+    <Content Include="_Archive\js\main.js" />
+    <Content Include="_Archive\js\material.min.js" />
+    <Content Include="_Archive\js\ripples.min.js" />
+    <Content Include="_Archive\js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="_Archive\single.html" />
+    <Content Include="_Archive\style.css" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -234,6 +276,35 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="_Archive\css\.DS_Store" />
+    <Content Include="_Archive\fonts\.DS_Store" />
+    <Content Include="_Archive\fonts\fontawesome-webfont.eot" />
+    <Content Include="_Archive\fonts\fontawesome-webfont.ttf" />
+    <Content Include="_Archive\fonts\fontawesome-webfont.woff" />
+    <Content Include="_Archive\fonts\fontawesome-webfont.woff2" />
+    <Content Include="_Archive\fonts\FontAwesome.otf" />
+    <Content Include="_Archive\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="_Archive\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="_Archive\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="_Archive\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="_Archive\fonts\Material-Design-Icons.eot" />
+    <Content Include="_Archive\fonts\Material-Design-Icons.ttf" />
+    <Content Include="_Archive\fonts\Material-Design-Icons.woff" />
+    <Content Include="_Archive\img\.DS_Store" />
+    <Content Include="_Archive\img\header-bg" />
+    <Content Include="_Archive\js\.DS_Store" />
+    <Content Include="_Archive\js\vendor\.DS_Store" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
