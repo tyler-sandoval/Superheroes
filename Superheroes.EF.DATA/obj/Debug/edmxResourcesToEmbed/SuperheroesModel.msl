@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeamSuperheroesModelStoreContainer" CdmEntityContainer="TeamSuperheroesEntities">
+    <EntitySetMapping Name="Alignments">
+      <EntityTypeMapping TypeName="TeamSuperheroesModel.Alignment">
+        <MappingFragment StoreEntitySet="Alignments">
+          <ScalarProperty Name="AlignID" ColumnName="AlignID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="TeamSuperheroesModel.Character">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="CharID" ColumnName="CharID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Race" ColumnName="Race" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="AbilityOne" ColumnName="AbilityOne" />
+          <ScalarProperty Name="AbilityTwo" ColumnName="AbilityTwo" />
+          <ScalarProperty Name="AbilityThree" ColumnName="AbilityThree" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="AlignID" ColumnName="AlignID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseCharacters">
+      <EntityTypeMapping TypeName="TeamSuperheroesModel.CourseCharacter">
+        <MappingFragment StoreEntitySet="CourseCharacters">
+          <ScalarProperty Name="CourseCharacterID" ColumnName="CourseCharacterID" />
+          <ScalarProperty Name="CharID" ColumnName="CharID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseTypes">
+      <EntityTypeMapping TypeName="TeamSuperheroesModel.CourseType">
+        <MappingFragment StoreEntitySet="CourseType">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

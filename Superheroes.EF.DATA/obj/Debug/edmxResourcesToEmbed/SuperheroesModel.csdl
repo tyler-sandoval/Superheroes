@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeamSuperheroesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alignment">
+    <Key>
+      <PropertyRef Name="AlignID" />
+    </Key>
+    <Property Name="AlignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Characters" Relationship="Self.FK_Characters_Alignments" FromRole="Alignments" ToRole="Characters" />
+  </EntityType>
+  <EntityType Name="Character">
+    <Key>
+      <PropertyRef Name="CharID" />
+    </Key>
+    <Property Name="CharID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Race" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AbilityOne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AbilityTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AbilityThree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AlignID" Type="Int32" />
+    <NavigationProperty Name="Alignment" Relationship="Self.FK_Characters_Alignments" FromRole="Characters" ToRole="Alignments" />
+    <NavigationProperty Name="CourseCharacters" Relationship="Self.FK_CourseCharacters_Characters" FromRole="Characters" ToRole="CourseCharacters" />
+  </EntityType>
+  <EntityType Name="CourseCharacter">
+    <Key>
+      <PropertyRef Name="CourseCharacterID" />
+    </Key>
+    <Property Name="CourseCharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CharID" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Character" Relationship="Self.FK_CourseCharacters_Characters" FromRole="CourseCharacters" ToRole="Characters" />
+  </EntityType>
+  <EntityType Name="CourseType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Characters_Alignments">
+    <End Role="Alignments" Type="Self.Alignment" Multiplicity="0..1" />
+    <End Role="Characters" Type="Self.Character" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alignments">
+        <PropertyRef Name="AlignID" />
+      </Principal>
+      <Dependent Role="Characters">
+        <PropertyRef Name="AlignID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseCharacters_Characters">
+    <End Role="Characters" Type="Self.Character" Multiplicity="1" />
+    <End Role="CourseCharacters" Type="Self.CourseCharacter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Characters">
+        <PropertyRef Name="CharID" />
+      </Principal>
+      <Dependent Role="CourseCharacters">
+        <PropertyRef Name="CharID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeamSuperheroesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alignments" EntityType="Self.Alignment" />
+    <EntitySet Name="Characters" EntityType="Self.Character" />
+    <EntitySet Name="CourseCharacters" EntityType="Self.CourseCharacter" />
+    <EntitySet Name="CourseTypes" EntityType="Self.CourseType" />
+    <AssociationSet Name="FK_Characters_Alignments" Association="Self.FK_Characters_Alignments">
+      <End Role="Alignments" EntitySet="Alignments" />
+      <End Role="Characters" EntitySet="Characters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseCharacters_Characters" Association="Self.FK_CourseCharacters_Characters">
+      <End Role="Characters" EntitySet="Characters" />
+      <End Role="CourseCharacters" EntitySet="CourseCharacters" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
