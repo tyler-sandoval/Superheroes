@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09f10fece5814c29af5cece1efd195da" Name="Diagram1">
-        <EntityTypeShape EntityType="TeamSuperheroesModel.Alignment" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamSuperheroesModel.Character" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamSuperheroesModel.CourseCharacter" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+      <Diagram DiagramId="66649cbebac74388be40a2392938ffe3" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamSuperheroesModel.Alignment" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamSuperheroesModel.Character" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamSuperheroesModel.CourseCharacter" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamSuperheroesModel.Cours" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamSuperheroesModel.CourseType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="TeamSuperheroesModel.FK_Characters_Alignments" ManuallyRouted="false" />
         <AssociationConnector Association="TeamSuperheroesModel.FK_CourseCharacters_Characters" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TeamSuperheroesModel.Course" Width="1.5" PointX="8" PointY="1.875" />
-        <AssociationConnector Association="TeamSuperheroesModel.FK_CourseCharacters_Courses1" />
+        <AssociationConnector Association="TeamSuperheroesModel.FK_CourseCharacters_Courses1" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamSuperheroesModel.FK_Courses_CourseType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

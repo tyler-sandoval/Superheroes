@@ -17,13 +17,13 @@ namespace Superheroes.EF.DATA
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CourseType()
         {
-            this.Courses = new HashSet<Course>();
+            this.Courses = new HashSet<Cours>();
         }
     
         public int TypeID { get; set; }
         public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Cours> Courses { get; set; }
     }
 }

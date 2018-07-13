@@ -20,7 +20,7 @@
     <Property Name="AbilityTwo" Type="varchar" MaxLength="50" />
     <Property Name="AbilityThree" Type="varchar" MaxLength="50" />
     <Property Name="Image" Type="varchar" MaxLength="100" />
-    <Property Name="AlignID" Type="int" />
+    <Property Name="AlignID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CourseCharacters">
     <Key>
@@ -48,7 +48,7 @@
     <Property Name="Type" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <Association Name="FK_Characters_Alignments">
-    <End Role="Alignments" Type="Self.Alignments" Multiplicity="0..1" />
+    <End Role="Alignments" Type="Self.Alignments" Multiplicity="1" />
     <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Alignments">

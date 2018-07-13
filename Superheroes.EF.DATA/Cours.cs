@@ -12,10 +12,10 @@ namespace Superheroes.EF.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class Cours
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
+        public Cours()
         {
             this.CourseCharacters = new HashSet<CourseCharacter>();
         }

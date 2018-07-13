@@ -19,6 +19,6 @@ namespace Superheroes.EF.DATA
         public int CourseID { get; set; }
     
         public virtual Character Character { get; set; }
-        public virtual Course Cours { get; set; }
+        public virtual Cours Cours { get; set; }
     }
 }

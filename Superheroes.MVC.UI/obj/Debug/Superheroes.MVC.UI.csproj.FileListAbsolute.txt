@@ -42,6 +42,9 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superhero
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\System.Web.WebPages.Razor.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\WebGrease.dll
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Superheroes.EF.DATA.pdb
+C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\System.Web.Helpers.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\System.Web.Mvc.xml
@@ -54,9 +57,6 @@ C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superhero
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Newtonsoft.Json.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\EntityFramework.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\EntityFramework.SqlServer.xml
-C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.Owin.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\Student\Documents\Visual Studio 2015\Projects\Superheroes\src\Superheroes.MVC.UI\bin\Microsoft.Owin.Security.xml

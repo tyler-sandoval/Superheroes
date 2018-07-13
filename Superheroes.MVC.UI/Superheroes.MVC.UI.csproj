@@ -171,6 +171,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CharactersController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -180,6 +182,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +191,37 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\material.min.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\ripples.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\Material-Design-Icons.svg" />
+    <Content Include="Content\img\about.jpg" />
+    <Content Include="Content\img\article-1.jpg" />
+    <Content Include="Content\img\article-2.jpg" />
+    <Content Include="Content\img\article-3.jpg" />
+    <Content Include="Content\img\article-4.jpg" />
+    <Content Include="Content\img\article-5.jpg" />
+    <Content Include="Content\img\avatar_1.jpg" />
+    <Content Include="Content\img\avatar_2.jpg" />
+    <Content Include="Content\img\avatar_3.jpg" />
+    <Content Include="Content\img\avatar_4.jpg" />
+    <Content Include="Content\img\eva.jpg" />
+    <Content Include="Content\img\map-marker.png" />
+    <Content Include="Content\img\post-1.jpg" />
+    <Content Include="Content\img\post-2.jpg" />
+    <Content Include="Content\img\single.jpg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery.particleground.min.js" />
+    <Content Include="Content\js\jquery.scrolly.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\material.min.js" />
+    <Content Include="Content\js\ripples.min.js" />
+    <Content Include="Content\js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -230,6 +264,24 @@
     <Content Include="_Archive\js\vendor\jquery-1.11.2.min.js" />
     <Content Include="_Archive\single.html" />
     <Content Include="_Archive\style.css" />
+    <Content Include="Content\css\.DS_Store" />
+    <Content Include="Content\fonts\.DS_Store" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\Material-Design-Icons.eot" />
+    <Content Include="Content\fonts\Material-Design-Icons.ttf" />
+    <Content Include="Content\fonts\Material-Design-Icons.woff" />
+    <Content Include="Content\img\.DS_Store" />
+    <Content Include="Content\img\header-bg.jpg" />
+    <Content Include="Content\js\.DS_Store" />
+    <Content Include="Content\js\vendor\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -305,6 +357,17 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Characters\Create.cshtml" />
+    <Content Include="Views\Characters\Delete.cshtml" />
+    <Content Include="Views\Characters\Details.cshtml" />
+    <Content Include="Views\Characters\Edit.cshtml" />
+    <Content Include="Views\Characters\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Home\ContactConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

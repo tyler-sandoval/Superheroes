@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TeamSuperheroesModelStoreContainer" CdmEntityContainer="TeamSuperheroesEntities">
+  <EntityContainerMapping StorageEntityContainer="TeamSuperheroesModelStoreContainer" CdmEntityContainer="TeamSuperheroesEntities1">
     <EntitySetMapping Name="Alignments">
       <EntityTypeMapping TypeName="TeamSuperheroesModel.Alignment">
         <MappingFragment StoreEntitySet="Alignments">
@@ -34,22 +34,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="TeamSuperheroesModel.Cours">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CourseTypes">
       <EntityTypeMapping TypeName="TeamSuperheroesModel.CourseType">
         <MappingFragment StoreEntitySet="CourseType">
           <ScalarProperty Name="TypeID" ColumnName="TypeID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="TeamSuperheroesModel.Course">
-        <MappingFragment StoreEntitySet="Courses">
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

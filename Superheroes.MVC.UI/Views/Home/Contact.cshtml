@@ -1,20 +1,79 @@
-﻿@{
+﻿@model Superheroes.MVC.UI.Models.ContactViewModel
+@{
     ViewBag.Title = "Contact";
 }
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-</hgroup>
-<div>
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
 
-    <address>
-        <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <i class="icon-envelope"></i><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="article-list">
+            <div class="entry-content">
+                <div class="entry-title text-center">
+                    <p>want to know more?</p>
+                    <h2>Contact with us</h2>
+                </div>
+                <div id="map-canvas"></div>
+                <!-- Google Maps API -->
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
+                <script>
+                                                function initialize() {
+                                                  var mapOptions = {
+                                                    zoom: 17,
+                                                    scrollwheel: false,
+                                                    center: new google.maps.LatLng(18.013764, -76.801992)
+                                                  };
+
+                                                  var map = new google.maps.Map(document.getElementById('map-canvas'),
+                                                      mapOptions);
+
+
+                                                  var marker = new google.maps.Marker({
+                                                    position: map.getCenter(),
+                                                    icon: '../Content/img/map-marker.png',
+                                                    map: map
+                                                  });
+
+                                                }
+
+                                                google.maps.event.addDomListener(window, 'load', initialize);
+                </script>
+                <div class="contact-form shadow-z-1">
+                    <h2 class="contact-title">Get in touch</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-control-wrapper">
+                                <input type="text" class="form-control empty" name="name">
+                                <div class="floating-label">Your Name</div>
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-control-wrapper">
+                                <input type="text" class="form-control empty" name="email">
+                                <div class="floating-label">Your email</div>
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="text" class="form-control empty" name="subject">
+                        <div class="floating-label">Subject</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <textarea name="message" id="message" class="form-control empty" cols="30" rows="10"></textarea>
+                        <div class="floating-label">Your Message</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <p><button type="submit" class="btn btn-danger">Send message</button></p>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+}

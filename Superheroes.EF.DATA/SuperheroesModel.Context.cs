@@ -13,10 +13,10 @@ namespace Superheroes.EF.DATA
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TeamSuperheroesEntities : DbContext
+    public partial class TeamSuperheroesEntities1 : DbContext
     {
-        public TeamSuperheroesEntities()
-            : base("name=TeamSuperheroesEntities")
+        public TeamSuperheroesEntities1()
+            : base("name=TeamSuperheroesEntities1")
         {
         }
     
@@ -28,7 +28,7 @@ namespace Superheroes.EF.DATA
         public virtual DbSet<Alignment> Alignments { get; set; }
         public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<CourseCharacter> CourseCharacters { get; set; }
+        public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<CourseType> CourseTypes { get; set; }
-        public virtual DbSet<Course> Courses { get; set; }
     }
 }

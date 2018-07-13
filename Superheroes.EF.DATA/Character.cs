@@ -29,7 +29,7 @@ namespace Superheroes.EF.DATA
         public string AbilityTwo { get; set; }
         public string AbilityThree { get; set; }
         public string Image { get; set; }
-        public Nullable<int> AlignID { get; set; }
+        public int AlignID { get; set; }
     
         public virtual Alignment Alignment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

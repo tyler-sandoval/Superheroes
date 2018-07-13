@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TeamSuperheroesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TeamSuperheroesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Alignments">
           <Key>
             <PropertyRef Name="AlignID" />
@@ -25,7 +25,7 @@
           <Property Name="AbilityTwo" Type="varchar" MaxLength="50" />
           <Property Name="AbilityThree" Type="varchar" MaxLength="50" />
           <Property Name="Image" Type="varchar" MaxLength="100" />
-          <Property Name="AlignID" Type="int" />
+          <Property Name="AlignID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CourseCharacters">
           <Key>
@@ -53,7 +53,7 @@
           <Property Name="Type" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_Characters_Alignments">
-          <End Role="Alignments" Type="Self.Alignments" Multiplicity="0..1" />
+          <End Role="Alignments" Type="Self.Alignments" Multiplicity="1" />
           <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Alignments">
@@ -123,7 +123,8 @@
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeamSuperheroesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -148,7 +149,7 @@
           <Property Name="AbilityTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AbilityThree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="AlignID" Type="Int32" />
+          <Property Name="AlignID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Alignment" Relationship="Self.FK_Characters_Alignments" FromRole="Characters" ToRole="Alignments" />
           <NavigationProperty Name="CourseCharacters" Relationship="Self.FK_CourseCharacters_Characters" FromRole="Characters" ToRole="CourseCharacters" />
         </EntityType>
@@ -160,7 +161,19 @@
           <Property Name="CharID" Type="Int32" Nullable="false" />
           <Property Name="CourseID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Character" Relationship="Self.FK_CourseCharacters_Characters" FromRole="CourseCharacters" ToRole="Characters" />
-          <NavigationProperty Name="Cours" Relationship="TeamSuperheroesModel.FK_CourseCharacters_Courses1" FromRole="CourseCharacter" ToRole="Cours" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_CourseCharacters_Courses1" FromRole="CourseCharacters" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CourseCharacters" Relationship="Self.FK_CourseCharacters_Courses1" FromRole="Courses" ToRole="CourseCharacters" />
+          <NavigationProperty Name="CourseType" Relationship="Self.FK_Courses_CourseType" FromRole="Courses" ToRole="CourseType" />
         </EntityType>
         <EntityType Name="CourseType">
           <Key>
@@ -168,10 +181,10 @@
           </Key>
           <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Courses" Relationship="TeamSuperheroesModel.FK_Courses_CourseType" FromRole="CourseType" ToRole="Cours" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_CourseType" FromRole="CourseType" ToRole="Courses" />
         </EntityType>
         <Association Name="FK_Characters_Alignments">
-          <End Role="Alignments" Type="Self.Alignment" Multiplicity="0..1" />
+          <End Role="Alignments" Type="Self.Alignment" Multiplicity="1" />
           <End Role="Characters" Type="Self.Character" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Alignments">
@@ -194,10 +207,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TeamSuperheroesEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_CourseCharacters_Courses1">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+          <End Role="CourseCharacters" Type="Self.CourseCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseCharacters">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_CourseType">
+          <End Role="CourseType" Type="Self.CourseType" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamSuperheroesEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Alignments" EntityType="Self.Alignment" />
           <EntitySet Name="Characters" EntityType="Self.Character" />
           <EntitySet Name="CourseCharacters" EntityType="Self.CourseCharacter" />
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
           <EntitySet Name="CourseTypes" EntityType="Self.CourseType" />
           <AssociationSet Name="FK_Characters_Alignments" Association="Self.FK_Characters_Alignments">
             <End Role="Alignments" EntitySet="Alignments" />
@@ -207,58 +245,21 @@
             <End Role="Characters" EntitySet="Characters" />
             <End Role="CourseCharacters" EntitySet="CourseCharacters" />
           </AssociationSet>
-          <EntitySet Name="Courses" EntityType="TeamSuperheroesModel.Course" />
-          <AssociationSet Name="FK_CourseCharacters_Courses1" Association="TeamSuperheroesModel.FK_CourseCharacters_Courses1">
-            <End Role="Cours" EntitySet="Courses" />
-            <End Role="CourseCharacter" EntitySet="CourseCharacters" />
+          <AssociationSet Name="FK_CourseCharacters_Courses1" Association="Self.FK_CourseCharacters_Courses1">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseCharacters" EntitySet="CourseCharacters" />
           </AssociationSet>
-          <AssociationSet Name="FK_Courses_CourseType" Association="TeamSuperheroesModel.FK_Courses_CourseType">
+          <AssociationSet Name="FK_Courses_CourseType" Association="Self.FK_Courses_CourseType">
             <End Role="CourseType" EntitySet="CourseTypes" />
-            <End Role="Cours" EntitySet="Courses" />
+            <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="Course">
-          <Key>
-            <PropertyRef Name="CourseID" />
-          </Key>
-          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CourseCharacters" Relationship="TeamSuperheroesModel.FK_CourseCharacters_Courses1" FromRole="Cours" ToRole="CourseCharacter" />
-          <NavigationProperty Name="CourseType" Relationship="TeamSuperheroesModel.FK_Courses_CourseType" FromRole="Cours" ToRole="CourseType" />
-        </EntityType>
-        <Association Name="FK_CourseCharacters_Courses1">
-          <End Type="TeamSuperheroesModel.Course" Role="Cours" Multiplicity="1" />
-          <End Type="TeamSuperheroesModel.CourseCharacter" Role="CourseCharacter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cours">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="CourseCharacter">
-              <PropertyRef Name="CourseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Courses_CourseType">
-          <End Type="TeamSuperheroesModel.CourseType" Role="CourseType" Multiplicity="1" />
-          <End Type="TeamSuperheroesModel.Course" Role="Cours" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CourseType">
-              <PropertyRef Name="TypeID" />
-            </Principal>
-            <Dependent Role="Cours">
-              <PropertyRef Name="TypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TeamSuperheroesModelStoreContainer" CdmEntityContainer="TeamSuperheroesEntities">
+        <EntityContainerMapping StorageEntityContainer="TeamSuperheroesModelStoreContainer" CdmEntityContainer="TeamSuperheroesEntities1">
           <EntitySetMapping Name="Alignments">
             <EntityTypeMapping TypeName="TeamSuperheroesModel.Alignment">
               <MappingFragment StoreEntitySet="Alignments">
@@ -292,22 +293,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="TeamSuperheroesModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CourseTypes">
             <EntityTypeMapping TypeName="TeamSuperheroesModel.CourseType">
               <MappingFragment StoreEntitySet="CourseType">
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="TeamSuperheroesModel.Course">
-              <MappingFragment StoreEntitySet="Courses">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
